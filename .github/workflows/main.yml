@@ -25,7 +25,7 @@ jobs:
 
       - name: Build application
         run: |
-          python main.py py2app
+          python setup.py py2app
           ls 
 
       - name: Upload artifact
