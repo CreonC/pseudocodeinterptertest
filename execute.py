@@ -22,6 +22,7 @@ def evaluate_expression(expression, symbol_table):
     else:
         raise ValueError("Invalid operator: {}".format(operator))
 def execute_ast(parse_tree):
+    print("Begin exec")
     symbol_table = {}  # A dictionary to store variable assignments
     result = None  # Variable to store the result of the 'Answer' assignment
 
