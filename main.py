@@ -42,7 +42,7 @@ interpret_line("PRINT X")  # Print the value of variable X
 interpret_line("X <- X + 10")  # Update the value of variable X
 interpret_line("Y <- X - 5")  # Declare variable Y with value X - 5
 interpret_line("PRINT Y + X")  # Print the value of variable Y
-interpret_line("PRINT = 5") #this should error
+#interpret_line("PRINT = 5") #this should error
 interpret_line("WFA <- Y + at3t32") #make this error
 
 print(variables)
