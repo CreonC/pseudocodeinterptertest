@@ -1,4 +1,8 @@
 # pcigcsecompiler
 
 
-internal use lmao
+it works! (partially)
+
+declaring a variable works, print and add/subtrack works
+
+
