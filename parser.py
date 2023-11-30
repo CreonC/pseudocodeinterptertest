@@ -46,7 +46,9 @@ def parse(tokens):
             statements = statement_list()
             if tokens and tokens[0][0] == 'KEYWORD' and tokens[0][1] == 'ENDIF':
                 tokens.popleft()  # Consume the 'ENDIF' keyword
-                return ('if', condition, statements)
+            else:
+                raise SyntaxError("Expected 'ENDIF' keyword, Got <placeholder>")
+            return ('if', condition, statements)
 
     def read_statement():
         tokens.popleft()  # Consume the 'READ' keyword

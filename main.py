@@ -2,16 +2,21 @@ import lexer
 import parser
 import execute as execengine
 
+#External packages
+import pprint
+
 program2 = '''
-x <- 10
-y <- 20
-PRINT x 
-PRINT y
-PRINT "If x does not equal to 5 then it's broken"
-IF x = 10 THEN
-    x - 5
-    PRINT x
+READ num1
+READ num2
+PRINT "ENTER PLUS OR MINUS"
+READ plusMinus
+IF plusMinus = "+" THEN
+    Answer <- num1 + num2
+ELSE
+    Answer <- num1 - num2
 ENDIF
+
+PRINT Answer
 '''
 
 
@@ -19,10 +24,12 @@ ENDIF
 
 tokens2 = lexer.lexer(program2)
 for token in tokens2:
-    print(token)
-parse_tre2e = parser.parse(tokens2)
-print(parse_tre2e)
+    pprint.pprint(token)
+parse_tree = parser.parse(tokens2)
+print("AST BELOW")
+pprint.pprint(parse_tree)
+print("AST ABOVE")
 
+print("execengine.execute_ast()")
+execengine.execute_ast(parse_tree)
 
-print("NOW RUNNING")
-execengine.execute_ast(parse_tre2e)
