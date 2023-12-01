@@ -10,6 +10,7 @@ token_patterns = [
 def lexer(program):
     tokens = []
     position = 0
+    inside_statement = 0
 
     while position < len(program):
         match = None
@@ -17,7 +18,18 @@ def lexer(program):
             regex_match = pattern.match(program, position)
             if regex_match:
                 match = regex_match.group(0)
-                tokens.append((token_type, match))
+                if token_type == 'LITERAL' and match.startswith('"') and match.endswith('"'):
+                    # Remove quotation marks from string literals
+                    match = match[1:-1]
+
+                if token_type == 'KEYWORD':
+                    if match in ['IF', 'FOR', 'WHILE']:  # Opening statement keyword
+                        inside_statement += 1
+                    elif match in ['ENDIF', 'NEXT', 'ENDWHILE']:  # Closing statement keyword
+                        inside_statement -= 1
+                        inside_statement = max(inside_statement, 0)  # Ensure inside_statement is non-negative
+
+                tokens.append((token_type, match, inside_statement))  # Include inside_statement in token tuple
                 position = regex_match.end()
                 break
 
