@@ -8,7 +8,6 @@ import pprint
 program2 = '''
 READ num1
 READ num2
-PRINT "ENTER PLUS OR MINUS"
 READ plusMinus
 IF plusMinus = "+" THEN
     Answer <- num1 + num2

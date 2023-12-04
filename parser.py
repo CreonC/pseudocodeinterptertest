@@ -33,7 +33,7 @@ def parse(tokens):
             print("AST: Got OPERATOR")
             return handle_operator()
 
-        return None  # Add a default return statement
+
 
     def assignment():
         identifier = tokens.popleft()[1]
@@ -58,7 +58,6 @@ def parse(tokens):
                 tokens.popleft()  # Consume the 'ENDIF' keyword
             else:
                 raise SyntaxError("Expected 'ENDIF' keyword, Got <placeholder>")
-            return ('if', condition, statements)
 
 
 
@@ -66,7 +65,7 @@ def parse(tokens):
         tokens.popleft()  # Consume the 'READ' keyword
         if tokens and tokens[0][0] == 'IDENTIFIER':
             identifier = tokens.popleft()[1]
-            return ('read', identifier)
+            return 'read', identifier
 
     def handle_operator():
         operator_token = tokens.pop(0)  # Remove the operator token from the tokens list
@@ -85,36 +84,7 @@ def parse(tokens):
         # Handle any other operators or raise an error if needed
         raise ValueError(f"Invalid operator: {operator}")
 
-    def expression():
-        # Handle expression parsing logic here
-        pass
 
-    def term():
-        # Handle term parsing logic here
-        pass
-
-    def factor():
-        # Handle factor parsing logic here
-        pass
-
-    def parse_statement():
-        if tokens and tokens[0][0] == 'IDENTIFIER':
-            print("AST: Got IDENTIFIER")
-            return assignment()
-        elif tokens and tokens[0][0] == 'KEYWORD' and tokens[0][1] == 'PRINT':
-            print("AST: Got PRINT")
-            return print_statement()
-        elif tokens and tokens[0][0] == 'KEYWORD' and tokens[0][1] == 'IF':
-            print("AST: Got IF")
-            return if_statement()
-        elif tokens and tokens[0][0] == 'KEYWORD' and tokens[0][1] == 'READ':
-            print("AST: Got READ")
-            return read_statement()
-        elif tokens and tokens[0][0] == 'OPERATOR':
-            print("AST: Got OPERATOR")
-            return handle_operator()
-
-        return None  # Add a default return statement
 
     def expression():
         term_value = term()

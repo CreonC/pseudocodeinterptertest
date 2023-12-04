@@ -3,6 +3,7 @@ def evaluate_expression(expression, symbol_table):
         return expression  # Return integer literal value
 
     if isinstance(expression, str):
+        print('Interpter: ' + str(expression))
         if expression.startswith('"') and expression.endswith('"'):
             return expression[1:-1]  # Return string literal value
         elif expression in symbol_table:
